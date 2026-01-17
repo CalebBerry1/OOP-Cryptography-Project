@@ -1,0 +1,73 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "reconfig",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "-S",
+        ".",
+        "-B",
+        "${workspaceFolder}/../MiniProject_build",
+        "-DCMAKE_BUILD_TYPE=Debug"
+      ],
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "--build",
+        "${workspaceFolder}/../MiniProject_build",
+        "--parallel"
+      ],
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "start",
+      "type": "shell",
+      "command": "echo",
+      "args": ["Starting app…"],
+      "problemMatcher": [],
+      "windows": {
+        "command": "${workspaceFolder}/../MiniProject_build/MiniProject.exe"
+      },
+      "osx": {
+        "command": "${workspaceFolder}/../MiniProject_build/MiniProject.app/Contents/MacOS/MiniProject"
+      },
+      "linux": {
+        "command": "${workspaceFolder}/../MiniProject_build/MiniProject"
+      }
+    },
+    {
+      "label": "rebuild",
+      "dependsOrder": "sequence",
+      "dependsOn": ["reconfig", "build", "start"],
+      "problemMatcher": []
+    },
+    {
+      "label": "clean",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-lc", "rm -rf '${workspaceFolder}/../MiniProject_build'"],
+      "problemMatcher": []
+    },
+    {
+      "label": "lint",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "find '${workspaceFolder}/src' -name '*.qml' -print0 | xargs -0 qmllint --quiet || true"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}
