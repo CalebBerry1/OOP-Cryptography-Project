@@ -1,0 +1,42 @@
+# Build directories
+build/
+build-debug/
+build-release/
+cmake-build-*/
+
+# CMake cache & files
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+CTestTestFile.cmake
+_install/
+_install/*
+
+# Qt/Generated
+*.qm
+*_autogen/
+
+# macOS cruft
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code
+.vscode/*.db
+.vscode/ipch/
+.vscode/configurations.json
+.vscode/launch.json
+# /.vscode-test/
+# !.vscode/settings.json
+# !.vscode/extensions.json
+
+# Logs
+*.log
+
+# User-specific
+*.user
+
+# Deployment output
+dist/.vscode/launch.json
+dist/

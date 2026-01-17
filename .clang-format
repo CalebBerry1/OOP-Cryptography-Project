@@ -1,0 +1,9 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnWidth: 0
+SortIncludes: True
+IncludeBlocks: Regroup
+SpaceBeforeParens: ControlStatements
+BreakBeforeBraces: Attach
