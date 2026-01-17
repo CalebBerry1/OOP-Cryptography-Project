@@ -1,0 +1,54 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "mac-debug",
+      "displayName": "macOS debug",
+      "generator": "Unix Makefiles",
+      "binaryDir": "build/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_PREFIX_PATH": "opt/homebrew/opt/qt"
+      }
+    },
+    {
+      "name": "mac-release",
+      "displayName": "macOS Release",
+      "generator": "Unix Makefiles",
+      "binaryDir": "build/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_PREFIX_PATH": "opt/homebrew/opt/qt"
+      }
+    },
+    {
+      "name": "win-debug",
+      "displayName": "Windows Release (MSVC + Ninja)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/win-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.10.0/msvc2022_64/lib/cmake"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "build-debug",
+      "configurePreset": "mac-debug"
+    },
+    {
+      "name": "build-release",
+      "configurePreset": "mac-release"
+    },
+    {
+      "name": "build-win-debug",
+      "configurePreset": "win-debug"
+    },
+    {
+      "name": "build-win-release",
+      "configurePreset": "win-release"
+    }
+  ],
+  "testPresets": []
+}
