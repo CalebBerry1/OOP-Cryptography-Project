@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Paths
+SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+BUILD_DIR="$SRC_DIR/../MiniProject_build"
+APP_PATH="$BUILD_DIR/MiniProject.app/Contents/MacOS/MiniProject"
+
+cmd="${1:-help}"
+
+case "$cmd" in
+  reconfig)
+    echo "🔧  Configuring CMake..."
+    cmake -S "$SRC_DIR" -B "$BUILD_DIR" -DCMAKE_BUILD_TYPE=Debug
+    ;;
+  build)
+    echo "🏗️  Building..."
+    cmake --build "$BUILD_DIR" --parallel
+    ;;
+  start|run)
+    echo "🚀  Starting..."
+    if [[ ! -x "$APP_PATH" ]]; then
+      echo "App not built yet. Building..."
+      cmake --build "$BUILD_DIR" --parallel
+    fi
+    "$APP_PATH"
+    ;;
+  rebuild)
+    "$0" reconfig
+    "$0" build
+    "$0" start
+    ;;
+  clean)
+    echo "🧹  Cleaning build directory..."
+    rm -rf "$BUILD_DIR"
+    ;;
+  help|*)
+    cat <<EOF
+Usage: task <command>
+
+Commands:
+  reconfig   Configure CMake
+  build      Build the app
+  start      Run the built app
+  rebuild    Reconfigure + build + start
+  clean      Delete build dir
+EOF
+    ;;
+esac
