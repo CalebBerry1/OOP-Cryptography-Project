@@ -9,7 +9,7 @@
         "-S",
         ".",
         "-B",
-        "${workspaceFolder}/../MiniProject_build",
+        "${workspaceFolder}/../CryptographyProject_build",
         "-DCMAKE_BUILD_TYPE=Debug"
       ],
       "problemMatcher": [],
