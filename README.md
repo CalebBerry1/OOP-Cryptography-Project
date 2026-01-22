@@ -151,7 +151,7 @@ If you aren't automatically in the correct directory, enter this command into th
 Clone the repo to the directory -> git clone https://github.com/CalebBerry1/Mini-Project.git
 
 # 4. Configure CMake to find Qt
-Navigate to \dev\Mini-Project -> cd \dev\Mini-Project
+Navigate to \{repo dir}\OOP-Cryptography-Project -> cd \{repo dir}\OOP-Cryptography-Project
 Make a new directory and name it build -> mkdir build
 cd build
 Show CMake where to find Qt -> cmake .. -DCMAKE_PREFIX_PATH="C:\Qt\6.10.0\msvc2022_64\lib\cmake"
