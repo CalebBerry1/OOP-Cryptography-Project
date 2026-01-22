@@ -47,7 +47,9 @@ if (NOT DEFINED Qt6_DIR AND NOT DEFINED CMAKE_PREFIX_PATH)
 endif()
 
 # Executable files go here
-add_executable()
+add_executable(CryptographyProject
+    src/app.cpp
+)
 
 qt_add_qml_module(
     CryptographyProject

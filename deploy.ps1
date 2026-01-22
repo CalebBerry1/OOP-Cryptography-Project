@@ -6,7 +6,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 # ---- Config ---------------------------------------------------------------
-$AppName    = "MiniProject"  # CMake target/exe name
+$AppName    = "CryptographyProject"  # CMake target/exe name
 $BuildPreset = if ($Preset -eq "win-debug") { "build-win-debug" } else { "build-win-release" }
 
 # Change this if your Qt path differs (adjust version/kit as needed)

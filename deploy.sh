@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # ---- Config ---------------------------------------------------------------
-APP_NAME="MiniProject"                 # CMake target / .app name
+APP_NAME="CryptographyProject"                 # CMake target / .app name
 PRESET="${1:-mac-debug}"               # pass mac-debug or mac-release
 BUILD_PRESET="build-${PRESET#mac-}"    # build-debug or build-release
 QT_BIN="$(brew --prefix qt)/bin"       # Homebrew Qt bin dir

@@ -8,17 +8,17 @@
       "binaryDir": "build/debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_PREFIX_PATH": "opt/homebrew/opt/qt"
+        "CMAKE_PREFIX_PATH": "/opt/homebrew/opt/qt"
       }
     },
     {
       "name": "mac-release",
       "displayName": "macOS Release",
       "generator": "Unix Makefiles",
-      "binaryDir": "build/debug",
+      "binaryDir": "build/release",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_PREFIX_PATH": "opt/homebrew/opt/qt"
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_PREFIX_PATH": "/opt/homebrew/opt/qt"
       }
     },
     {
