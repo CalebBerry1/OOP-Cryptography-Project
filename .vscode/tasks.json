@@ -9,7 +9,7 @@
         "-S",
         ".",
         "-B",
-        "${workspaceFolder}/../CryptographyProject_build",
+        "${workspaceFolder}/build/debug",
         "-DCMAKE_BUILD_TYPE=Debug"
       ],
       "problemMatcher": [],
@@ -19,11 +19,7 @@
       "label": "build",
       "type": "shell",
       "command": "cmake",
-      "args": [
-        "--build",
-        "${workspaceFolder}/../MiniProject_build",
-        "--parallel"
-      ],
+      "args": ["--build", "${workspaceFolder}/build/debug", "--parallel"],
       "problemMatcher": [],
       "group": {
         "kind": "build",
