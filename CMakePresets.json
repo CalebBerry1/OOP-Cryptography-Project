@@ -28,7 +28,7 @@
       "binaryDir": "${sourceDir}/build/win-debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_PREFIX_PATH": "C:/Qt/6.10.0/msvc2022_64/lib/cmake"
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.10.1/msvc2022_64"
       }
     },
     {
@@ -38,7 +38,7 @@
       "binaryDir": "${sourceDir}/build/win-debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_PREFIX_PATH": "C:/Qt/6.10.0/msvc2022_64/lib/cmake"
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.10.1/msvc2022_64"
       }
     }
   ],
