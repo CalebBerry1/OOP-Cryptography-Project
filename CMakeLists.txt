@@ -53,7 +53,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-add_executable(CryptographyProject
+qt_add_executable(CryptographyProject
     src/app.cpp
 )
 
@@ -61,7 +61,7 @@ qt_add_qml_module(CryptographyProject
     URI CryptographyProject
     VERSION 1.0
     QML_FILES
-        # qml/Main.qml
+        src/Components/Main.qml
 )
 
 target_link_libraries(CryptographyProject PRIVATE
