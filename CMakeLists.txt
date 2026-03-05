@@ -54,7 +54,9 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 qt_add_executable(CryptographyProject
-    src/app.cpp
+    src/main.cpp
+    src/app/mainWindow.h
+    src/app/mainWindow.cpp
 )
 
 qt_add_qml_module(CryptographyProject
