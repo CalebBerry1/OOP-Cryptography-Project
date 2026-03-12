@@ -3,5 +3,8 @@
   "C_Cpp.clang_format_style": "file",
   "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
   "qt.qml.languageServer.enabled": true,
-  "qt.qml.languageServer.buildDir": "${workspaceFolder}/build/debug"
+  "qt.qml.languageServer.buildDir": "${workspaceFolder}/build/debug",
+  "cmake.configureEnvironment": {
+    "VSCMD_START_DIR": "${workspaceFolder}"
+  }
 }

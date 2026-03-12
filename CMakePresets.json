@@ -24,11 +24,17 @@
     {
       "name": "win-debug",
       "displayName": "Windows Debug (MSVC + Ninja)",
-      "generator": "Ninja",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64",
       "binaryDir": "${sourceDir}/build/win-debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_PREFIX_PATH": "C:/Qt/6.10.0/msvc2022_64/lib/cmake"
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.10.1/msvc2022_64/lib/cmake",
+        "CMAKE_C_COMPILER": "cl.exe",
+        "CMAKE_CXX_COMPILER": "cl.exe"
+      },
+      "environment": {
+        "VSCMD_ARG_TGT_ARCH": "x64"
       }
     },
     {
