@@ -1,24 +1,17 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QQmlContext>
+#include <QUrl>
 
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    const QUrl url(u"qrc:/CryptographyProject/Main.qml"_qs);
 
-    QObject::connect(
-        &engine, &QQmlApplicationEngine::objectCreated,
-        &app, [url](QObject *obj, const QUrl & objUrl) {
-            if (!obj && url == objUrl) {
-                QCoreApplication::exit(-1);
-            },
-        },
-            Qt::QueuedConnection
-    );
-
-    engine.load(url);
+    // If your file is qml/Main.qml in qt_add_qml_module:
+    engine.loadFromModule("CryptographyProject", "Main");
+    
+    if (engine.rootObjects().isEmpty())
+        return -1;
 
     return app.exec();
 }

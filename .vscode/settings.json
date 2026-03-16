@@ -8,3 +8,8 @@
     "VSCMD_START_DIR": "${workspaceFolder}"
   }
 }
+  "cmake.cmakePath": "C:/Qt/Tools/CMake_64/bin/cmake.exe",
+  "cmake.generator": "Ninja",
+  "cmake.ninjaPath": "C:/Qt/Tools/Ninja/ninja.exe",
+  "C_Cpp.errorSquiggles": "disabled"
+}

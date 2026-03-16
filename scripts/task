@@ -3,8 +3,8 @@ set -euo pipefail
 
 # Paths
 SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-BUILD_DIR="$SRC_DIR/../MiniProject_build"
-APP_PATH="$BUILD_DIR/MiniProject.app/Contents/MacOS/MiniProject"
+BUILD_DIR="$SRC_DIR/../CryptographyProject_build"
+APP_PATH="$BUILD_DIR/CryptographyProject.app/Contents/MacOS/CryptographyProject"
 
 cmd="${1:-help}"
 
