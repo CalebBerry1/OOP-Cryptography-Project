@@ -53,6 +53,9 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
+add_executable(CryptoApp src/app.cpp)
+add_executable(TestApp testFolder/testFile.cpp)
+add_executable(CipherXOR src/XOR.cpp)
 qt_add_executable(CryptographyProject
     src/app.cpp
 )

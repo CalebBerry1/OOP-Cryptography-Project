@@ -30,7 +30,9 @@
       "label": "start",
       "type": "shell",
       "command": "echo",
-      "args": ["Starting app…"],
+      "args": [
+        "Starting app…"
+      ],
       "problemMatcher": [],
       "windows": {
         "command": "${workspaceFolder}/../MiniProject_build/MiniProject.exe"
@@ -45,14 +47,21 @@
     {
       "label": "rebuild",
       "dependsOrder": "sequence",
-      "dependsOn": ["reconfig", "build", "start"],
+      "dependsOn": [
+        "reconfig",
+        "build",
+        "start"
+      ],
       "problemMatcher": []
     },
     {
       "label": "clean",
       "type": "shell",
       "command": "bash",
-      "args": ["-lc", "rm -rf '${workspaceFolder}/../MiniProject_build'"],
+      "args": [
+        "-lc",
+        "rm -rf '${workspaceFolder}/../MiniProject_build'"
+      ],
       "problemMatcher": []
     },
     {
