@@ -47,7 +47,7 @@ set(CMAKE_AUTOUIC ON)
 add_executable(CryptoApp src/app.cpp)
 add_executable(TestApp testFolder/testFile.cpp)
 add_executable(CipherXOR src/algorithms/XOR.cpp)
-add_executable(FeistelXOR src/algorithms/Feistel.cpp)
+add_executable(CipherFeistel src/algorithms/Feistel.cpp)
 qt_add_executable(CryptographyProject
     src/main.cpp
     src/components/app/mainWindow.h

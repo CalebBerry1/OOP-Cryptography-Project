@@ -1,3 +1,4 @@
+// the Feistel cipher
 #include <iostream>
 
 std::string input;
