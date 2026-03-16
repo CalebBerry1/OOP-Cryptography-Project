@@ -17,4 +17,4 @@ class MainWindow : public QMainWindow {
         EncryptPage* encrypt_;
 
         void setupShortcuts();
-}
+};
