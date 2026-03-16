@@ -10,7 +10,7 @@ $AppName    = "CryptographyProject"  # CMake target/exe name
 $BuildPreset = if ($Preset -eq "win-debug") { "build-win-debug" } else { "build-win-release" }
 
 # Change this if your Qt path differs (adjust version/kit as needed)
-$QtRoot = "C:\Qt\6.10.0\msvc2022_64"
+$QtRoot = "C:\Qt\6.10.1\msvc2022_64"
 $QtBin  = Join-Path $QtRoot "bin"
 
 # Output exe path based on preset
