@@ -37,7 +37,6 @@ _install/*
 # User-specific
 *.user
 .qmlls.ini
-
 # Deployment output
 dist/.vscode/launch.json
 dist/
