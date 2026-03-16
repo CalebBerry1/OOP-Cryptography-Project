@@ -6,7 +6,6 @@
 #include <QKeySequence>
 
 #include "../pages/homePage.h"
-#include "../pages/encryptPage.h"
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     setWindowTitle("OOP Cryptography Project");
@@ -18,15 +17,10 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     setCentralWidget(stack_);
 
     home_ = new HomePage(stack_);
-    encrypt_ = new EncryptPage(stack_);
 
     stack_ -> addWidget(home_);
-    stack_ -> addWidget(encrypt_);
 
-    connect(home_, &HomePage::encryptRequested, this, [this]() {
-        stack_ -> setCurrentWidget(encrypt_);
-    });
-
+    
     setupShortcuts();
 }
 
@@ -45,5 +39,5 @@ void MainWindow::applyStyle() {
         QWidget {
             background-color: #11131c;
         }
-    )")
+    )");
 }

@@ -10,4 +10,4 @@ class HomePage : public QWidget {
     public: explicit HomePage(QWidget* parent = nullptr);
 
     signals: void encryptRequested();
-}
+};

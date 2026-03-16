@@ -1,7 +1,7 @@
 #include "primaryButton.h"
 
 PrimaryButton::PrimaryButton(const QString& text, QWidget* parent) : QPushButton(text, parent) {
-    setMinumunHeight(40);
+    setMinimumHeight(40);
     applyStyle();
 }
 
@@ -22,5 +22,5 @@ void PrimaryButton::applyStyle() {
         QPushButton:pressed{
             background-color: #2457b8;
         }
-    )")
+    )");
 }

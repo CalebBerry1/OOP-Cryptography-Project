@@ -5,14 +5,10 @@ project(CryptographyProject LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# Prefer config packages (Qt provides config packages)
 set(CMAKE_FIND_PACKAGE_PREFER_CONFIG ON)
 
-# Qt: generate qmlls ini (optional)
-set(QT_QML_GENERATE_QMLLS_INI ON)
-
-# ---- Qt discovery fallback (only if user didn't set it via presets/env) ----
 if (NOT DEFINED Qt6_DIR AND NOT DEFINED CMAKE_PREFIX_PATH)
     set(_qt_cmake_hints "")
 
@@ -22,7 +18,6 @@ if (NOT DEFINED Qt6_DIR AND NOT DEFINED CMAKE_PREFIX_PATH)
             list(APPEND _qt_cmake_hints "${_kit}/lib/cmake")
         endforeach()
     elseif(APPLE)
-        # Homebrew Qt common locations
         list(APPEND _qt_cmake_hints
             "/opt/homebrew/opt/qt/lib/cmake"
             "/usr/local/opt/qt/lib/cmake"
@@ -41,37 +36,27 @@ if (NOT DEFINED Qt6_DIR AND NOT DEFINED CMAKE_PREFIX_PATH)
     endif()
 endif()
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick QuickControls2 Widgets)
-
-qt_policy(SET QTP0001 NEW)
-qt_policy(SET QTP0004 NEW)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
 
 qt_standard_project_setup()
 
-# Qt automoc/uic/rcc
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 qt_add_executable(CryptographyProject
     src/main.cpp
-    src/app/mainWindow.h
-    src/app/mainWindow.cpp
-)
-
-qt_add_qml_module(CryptographyProject
-    URI CryptographyProject
-    VERSION 1.0
-    QML_FILES
-        src/Components/Main.qml
+    src/components/app/mainWindow.h
+    src/components/app/mainWindow.cpp
+    src/components/pages/homePage.h
+    src/components/pages/homePage.cpp
+    src/components/buttons/PrimaryButton.h
+    src/components/buttons/PrimaryButton.cpp
 )
 
 target_link_libraries(CryptographyProject PRIVATE
     Qt6::Core
     Qt6::Gui
-    Qt6::Qml
-    Qt6::Quick
-    Qt6::QuickControls2
     Qt6::Widgets
 )
 
@@ -83,5 +68,3 @@ install(TARGETS CryptographyProject
     BUNDLE DESTINATION .
     RUNTIME DESTINATION .
 )
-
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
