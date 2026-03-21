@@ -12,6 +12,12 @@ class EncryptPage : public QWidget {
 
     signals: void backRequested();
 
+    private slots:
+        void onEncryptClicked();
+        void onDecryptClicked();
+        void onCopyClicked();
+        void onClearClicked();
+
     private: 
         QTextEdit* inputField_;
         QTextEdit* outputField_;
