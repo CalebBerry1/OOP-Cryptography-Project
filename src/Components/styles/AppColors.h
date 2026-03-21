@@ -2,31 +2,42 @@
 
 namespace AppColors {
     // --- BACKGROUNDS ----
-    constexpr auto windowBg = "#0b0d14";
-    constexpr auto widgetBg = "#11131c";
-    constexpr auto surfaceBg = "#1a1d2e";
-    constexpr auto overlayBg = "252840";
+    constexpr auto windowBg = "#050608";
+    constexpr auto widgetBg = "#090b12";
+    constexpr auto surfaceBg = "#0f1220";
+    constexpr auto overlayBg = "#161a2e";
 
     // --- PRIMARY ---
-    constexpr auto primaryBase = "#2d6cdf";
-    constexpr auto primaryHover = "#3b7cff";
-    constexpr auto primaryPress = "#2457b8";
-    constexpr auto primaryMuted = "#1e3f8a";
+    constexpr auto primaryBase = "#1a6fff";
+    constexpr auto primaryHover = "#3d85ff";
+    constexpr auto primaryPress = "#1250cc";
+    constexpr auto primaryMuted = "#0d2f6e";
+
+    // --- ACCENT ---
+    constexpr auto accentBase = "#00e5ff";
+    constexpr auto accentMuted = "#003d47";
+
+    // --- VIBRANT ---
+    constexpr auto vibrantPink = "#ff2d78";
+    constexpr auto vibrantPurple = "#9b5de5";
+    constexpr auto vibrantGreen = "#00f5a0";
+    constexpr auto vibrantOrange = "#ff6b35";
 
     // --- TEXT ---
-    constexpr auto textPrimary = "#e8ecf3";
-    constexpr auto textSecondary = "#b8c1d1";
-    constexpr auto textDisabled = "#5a6478";
+    constexpr auto textPrimary = "#edf1f9";
+    constexpr auto textSecondary = "#8a95aa";
+    constexpr auto textDisabled = "#3d4455";
     constexpr auto textInverse = "#ffffff";
 
     // --- BORDERS & DIVIDERS ---
-    constexpr auto borderSubtle = "#2a2d3e";
-    constexpr auto borderDefault = "#3c4058";
-    constexpr auto borderFocus = "#3b7cff";
+    constexpr auto borderSubtle = "#1c1f2e";
+    constexpr auto borderDefault = "#2a2f45";
+    constexpr auto borderFocus = "#2d6cdf";
+    constexpr auto borderGlow = "#00e5ff";
 
     // --- SEMANTIC ---
-    constexpr auto success = "#2ecc71";
-    constexpr auto warning = "#f0a500";
-    constexpr auto error = "#e05252";
-    const auto info = "#3b7cff";
+    constexpr auto success = "#22c55e";
+    constexpr auto warning = "#f59e0b";
+    constexpr auto error = "#ef4444";
+    const auto info = "#2d6cdf";
 }

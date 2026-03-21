@@ -1,8 +1,9 @@
 #include "homePage.h"
-#include "../buttons/primaryButton.h"
 
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QPushButton>
+#include <AppStyles.h>
 
 HomePage::HomePage(QWidget* parent) : QWidget(parent) {
     auto* layout = new QVBoxLayout(this);
@@ -17,7 +18,10 @@ HomePage::HomePage(QWidget* parent) : QWidget(parent) {
     subtitle -> setAlignment(Qt::AlignCenter);
     subtitle -> setStyleSheet("color: #b8c1d1; font-size: 14px");
 
-    auto* encryptButton = new PrimaryButton("Go to Encrypt Page", this);
+    auto* encryptButton = new QPushButton("Go to Encrypt Page", this);
+
+    encryptButton -> setMinimumHeight(40);
+    encryptButton -> setStyleSheet(AppStyles::primaryButton());
 
     layout -> addStretch();
     layout -> addWidget(title);

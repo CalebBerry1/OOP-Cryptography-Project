@@ -7,6 +7,7 @@
 #include <QLabel>
 #include <QTextEdit>
 #include <QComboBox>
+#include <QPushButton>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
@@ -23,7 +24,7 @@ EncryptPage::EncryptPage(QWidget* parent) : QWidget(parent) {
     // --- ALGORITHM SELECTOR ---
     algorithmSelector_ = new QComboBox(this);
     algorithmSelector_ -> addItems({"XOR Stream Cipher", "Vigenere Cipher", "Feistel Cipher"});
-    algorithmSelector_ -> setStyleSheet(AppStyles::inputField());
+    algorithmSelector_ -> setStyleSheet(AppStyles::comboBox());
 
     // --- INPUT FIELD ---
     auto* inputLabel = new QLabel("Source Text", this);
@@ -33,6 +34,7 @@ EncryptPage::EncryptPage(QWidget* parent) : QWidget(parent) {
     inputField_ -> setPlaceholderText("Enter text to encrypt...");
     inputField_ -> setFixedHeight(120);
     inputField_ -> setStyleSheet(AppStyles::inputField());
+    inputField_ -> setGraphicsEffect(AppStyles::glowShadow(this));
 
     // --- OUTPUT FIELD ---
     auto* outputLabel = new QLabel("Output", this);
@@ -43,11 +45,21 @@ EncryptPage::EncryptPage(QWidget* parent) : QWidget(parent) {
     outputField_ -> setFixedHeight(120);
     outputField_ -> setReadOnly(true);
     outputField_ -> setStyleSheet(AppStyles::inputField());
+    outputField_ -> setGraphicsEffect(AppStyles::glowShadow(this));
 
     // --- BUTTONS ---
-    auto* encryptButton = new PrimaryButton("Encrypt", this);
-    auto* decryptButton = new PrimaryButton("Decrypt", this);
-    auto* backButton = new PrimaryButton("Back", this);
+    auto* encryptButton = new QPushButton("Encrypt", this);
+    auto* decryptButton = new QPushButton("Decrypt", this);
+    auto* backButton = new QPushButton("Back", this);
+
+    encryptButton -> setMinimumHeight(40);
+    encryptButton -> setStyleSheet(AppStyles::primaryButton());
+
+    decryptButton -> setMinimumHeight(40);
+    decryptButton -> setStyleSheet(AppStyles::primaryButton());
+
+    backButton -> setMinimumHeight(40);
+    backButton -> setStyleSheet(AppStyles::ghostButton());
 
     auto* buttonRow = new QHBoxLayout();
     buttonRow -> setSpacing(12);
