@@ -50,6 +50,8 @@ qt_add_executable(CryptographyProject
     src/components/app/mainWindow.cpp
     src/components/pages/homePage.h
     src/components/pages/homePage.cpp
+    src/components/pages/encryptPage.h
+    src/components/pages/encryptPage.cpp
     src/components/buttons/PrimaryButton.h
     src/components/buttons/PrimaryButton.cpp
     src/components/styles/AppColors.h
