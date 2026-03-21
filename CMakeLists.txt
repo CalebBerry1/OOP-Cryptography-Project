@@ -55,7 +55,12 @@ qt_add_executable(CryptographyProject
     src/components/pages/homePage.cpp
     src/components/buttons/PrimaryButton.h
     src/components/buttons/PrimaryButton.cpp
+    src/components/styles/AppColors.h
+    src/components/styles/AppFonts.h
+    src/components/styles/AppStyles.h
 )
+
+target_include_directories(CryptographyProject PRIVATE ${CMAKE_SOURCE_DIR}/src/components/styles)
 
 target_link_libraries(CryptographyProject PRIVATE
     Qt6::Core
