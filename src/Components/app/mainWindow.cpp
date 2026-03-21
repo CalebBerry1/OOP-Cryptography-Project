@@ -6,6 +6,7 @@
 #include <QKeySequence>
 
 #include "../pages/homePage.h"
+#include "AppStyles.h"
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     setWindowTitle("OOP Cryptography Project");
@@ -22,6 +23,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
 
     
     setupShortcuts();
+    applyStyle();
 }
 
 void MainWindow::setupShortcuts() {
@@ -32,12 +34,5 @@ void MainWindow::setupShortcuts() {
 }
 
 void MainWindow::applyStyle() {
-    setStyleSheet(R"(
-        QMainWindow {
-            background-color: #0b0d14;
-        }
-        QWidget {
-            background-color: #11131c;
-        }
-    )");
+    setStyleSheet(AppStyles::window());
 }
