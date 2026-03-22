@@ -10,8 +10,14 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QClipboard>
+#include <QGuiApplication>
+#include <QDebug>
 
 EncryptPage::EncryptPage(QWidget* parent) : QWidget(parent) {
+
+    qDebug() << "[EncryptPage] Initializing";
+
     auto* layout = new QVBoxLayout(this);
     layout -> setContentsMargins(24, 24, 24, 24);
     layout -> setSpacing(16);
@@ -60,11 +66,18 @@ EncryptPage::EncryptPage(QWidget* parent) : QWidget(parent) {
 
     backButton -> setMinimumHeight(40);
     backButton -> setStyleSheet(AppStyles::ghostButton());
+    auto* encryptButton = new PrimaryButton("Encrypt", this);
+    auto* decryptButton = new PrimaryButton("Decrypt", this);
+    auto* copyButton = new PrimaryButton("Copy", this);
+    auto* clearButton = new PrimaryButton("Clear", this);
+    auto* backButton = new PrimaryButton("Back", this);
 
     auto* buttonRow = new QHBoxLayout();
     buttonRow -> setSpacing(12);
     buttonRow -> addWidget(backButton);
+    buttonRow -> addWidget(clearButton);
     buttonRow -> addStretch(0);
+    buttonRow -> addWidget(copyButton);
     buttonRow -> addWidget(decryptButton);
     buttonRow -> addWidget(encryptButton);
 
@@ -78,5 +91,88 @@ EncryptPage::EncryptPage(QWidget* parent) : QWidget(parent) {
     layout -> addLayout(buttonRow);
     layout -> addStretch();
 
+    // --- CONNECTIONS ---
     connect(backButton, &QPushButton::clicked, this, &EncryptPage::backRequested);
+    connect(encryptButton, &QPushButton::clicked, this, &EncryptPage::onEncryptClicked);
+    connect(decryptButton, &QPushButton::clicked, this, &EncryptPage::onDecryptClicked);
+    connect(copyButton, &QPushButton::clicked, this, &EncryptPage::onCopyClicked);
+    connect(clearButton, &QPushButton::clicked, this, &EncryptPage::onClearClicked);
+
+    qDebug() << "[EncryptPage] Ready";
+}
+
+void EncryptPage::onEncryptClicked() {
+    try {
+        qDebug() << "[EncryptPage] onEncryptClicked()";
+
+        QString input = inputField_ -> toPlainText().trimmed();
+        QString algorithm = algorithmSelector_ -> currentText();
+
+        if (input.isEmpty()) {
+            qDebug() << "[EncryptPage] Encrypt aborted - input is empty";
+            outputField_ -> setPlainText("Please enter some text to encrypt.");
+            return;
+        }
+
+        qDebug() << "[EncryptPage] Encrypting with algorithm:" << algorithm;
+
+        // Dummy output - replace with real cipher logic later
+        outputField_ -> setPlainText("ENCRYPTED[" + algorithm + "]: Wq7#mZ2$kLp!9vNx");
+    } catch (const std::exception& e) {
+        qDebug() << "[EncryptPage] onEncryptClicked() exception:" << e.what();
+    }
+}
+
+void EncryptPage::onDecryptClicked() {
+    try {
+        qDebug() << "[EncryptPage] onDecryptClicked()";
+
+        QString input = inputField_ -> toPlainText().trimmed();
+        QString algorithm = algorithmSelector_ -> currentText();
+
+        if (input.isEmpty()) {
+            qDebug() << "[EncryptPage] Decrypt aborted - input is empty";
+            outputField_ -> setPlainText("Please enter some text to decrypt.");
+            return;
+        }
+        
+        qDebug() << "[EncryptPage] Decrypting with algorithm:" << algorithm;
+
+        // Dummy output - replace with real cipher logic later
+        outputField_ -> setPlainText("DECRYPTED[" + algorithm + "]: Hello, world!");
+        
+
+        } catch (const std::exception& e) {
+        qDebug() << "[EncryptPage] onDecryptClicked() exception:" << e.what();
+
+    }
+}
+
+void EncryptPage::onCopyClicked() {
+    try {
+        qDebug() << "[EncryptPage] onCopyClicked()";
+
+        QString output = outputField_ -> toPlainText();
+
+        if (output.isEmpty()) {
+            qDebug() << "[EncryptPage] Copy aborted - output is empty";
+            return;
+        }
+
+        QGuiApplication::clipboard() -> setText(output);
+        qDebug() << "[EncryptPage] Output copied to clipboard";
+    } catch (const std::exception& e) {
+        qDebug() << "[EncryptPage] onCopyClicked() exception:" << e.what();
+    }
+}
+
+void EncryptPage::onClearClicked() {
+    try {
+        qDebug() << "[EncryptPage] onClearClicked()";
+        inputField_ -> clear();
+        outputField_ -> clear();
+        qDebug() << "[EncryptPage] Fields cleared";
+    } catch (const std::exception& e) {
+        qDebug() << "[EncryptPage] onClearClicked() exception:" << e.what();
+    }
 }
