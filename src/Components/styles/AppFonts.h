@@ -16,6 +16,13 @@ namespace AppFonts {
     constexpr int weightSemibold = 600;
     const int weightBold = 700;
 
+    // --- LETTER SPACING ---
+    constexpr int trackingTight = -1;
+    constexpr int trackingNormal = 0;
+    constexpr int trackingWide = 1;
+    constexpr int trackingWidest = 2;
+
     // --- FONT FAMILY ---
     constexpr auto family = "Segoe UI, SF Pro Display, sans-serif";
+    constexpr auto familyMono = "JetBrains Mono, Consolas, monospace";
 }
