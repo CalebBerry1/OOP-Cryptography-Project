@@ -57,6 +57,8 @@ EncryptPage::EncryptPage(QWidget* parent) : QWidget(parent) {
     auto* encryptButton = new QPushButton("Encrypt", this);
     auto* decryptButton = new QPushButton("Decrypt", this);
     auto* backButton = new QPushButton("Back", this);
+    auto* copyButton = new QPushButton("Copy", this);
+    auto* clearButton = new QPushButton("Clear", this);
 
     encryptButton -> setMinimumHeight(40);
     encryptButton -> setStyleSheet(AppStyles::primaryButton());
@@ -66,11 +68,13 @@ EncryptPage::EncryptPage(QWidget* parent) : QWidget(parent) {
 
     backButton -> setMinimumHeight(40);
     backButton -> setStyleSheet(AppStyles::ghostButton());
-    auto* encryptButton = new PrimaryButton("Encrypt", this);
-    auto* decryptButton = new PrimaryButton("Decrypt", this);
-    auto* copyButton = new PrimaryButton("Copy", this);
-    auto* clearButton = new PrimaryButton("Clear", this);
-    auto* backButton = new PrimaryButton("Back", this);
+
+    copyButton -> setMinimumHeight(40);
+    copyButton -> setStyleSheet(AppStyles::primaryButton());
+
+    clearButton -> setMinimumHeight(40);
+    clearButton -> setStyleSheet(AppStyles::ghostButton());
+    
 
     auto* buttonRow = new QHBoxLayout();
     buttonRow -> setSpacing(12);
