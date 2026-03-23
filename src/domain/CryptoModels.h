@@ -5,7 +5,7 @@
 
 enum class Algorithm {
     XorStream,
-    Vinegere,
+    Vigenere,
     Feistel
 };
 

@@ -7,7 +7,7 @@
 
 #include "../pages/homePage.h"
 #include "../pages/encryptPage.h"
-#include "AppStyles.h"
+#include "../styles/AppStyles.h"
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     setWindowTitle("OOP Cryptography Project");
