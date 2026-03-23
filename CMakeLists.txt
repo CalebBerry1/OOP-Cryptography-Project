@@ -57,6 +57,10 @@ qt_add_executable(CryptographyProject
     src/components/styles/AppColors.h
     src/components/styles/AppFonts.h
     src/components/styles/AppStyles.h
+    src/core/ICipher.h
+    src/domain/CryptoStep.h
+    src/domain/CryptoModels.h
+    
 )
 
 target_include_directories(CryptographyProject PRIVATE ${CMAKE_SOURCE_DIR}/src/components/styles)
