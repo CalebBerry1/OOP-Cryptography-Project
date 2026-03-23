@@ -1,9 +1,9 @@
 #include "homePage.h"
+#include "../styles/AppStyles.h"
 
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QPushButton>
-#include <AppStyles.h>
 
 HomePage::HomePage(QWidget* parent) : QWidget(parent) {
     auto* layout = new QVBoxLayout(this);
