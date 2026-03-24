@@ -1,0 +1,1 @@
+std::string makeStringToBinary(std::string input);
