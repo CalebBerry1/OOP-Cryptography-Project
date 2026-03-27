@@ -44,7 +44,16 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
+add_library(Helpers
+    src/algorithms/helper/makeStringToBinary.cpp
+)
+
+target_include_directories(Helpers PUBLIC
+    ${CMAKE_SOURCE_DIR}/src/algorithms
+)
+
 add_executable(TestApp testFolder/testFile.cpp)
+target_link_libraries(TestApp PRIVATE Helpers)
 add_executable(CipherXOR src/algorithms/XOR.cpp)
 add_executable(CipherFeistel src/algorithms/Feistel.cpp)
 qt_add_executable(CryptographyProject
