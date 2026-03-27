@@ -2,10 +2,13 @@
 #include <iostream>
 #include <bitset>
 #include <string>
-#include "helper/makeStringToBinary.h"
+#include "helper/makeStringToBinaryString.h"
 
 std::string input;
 std::string output;
+std::string leftHalf;
+std::string rightHalf;
+int index = 0;
 int ascii;
 
 // round function example: convert data and key to ASCII, increase ASCII values by key
@@ -21,6 +24,22 @@ std::string roundFunction(std::string data, int key) {
     }
 
     return output;
+}
+
+// function to split the data input into two halves, assigning the halves to "leftHalf" and "rightHalf"
+void splitData(std::string data) {
+
+    // collects the first half of data to "leftHalf"
+    while (index < (data.length()/2) ) {
+        leftHalf += data[index];
+        index++;
+    }
+
+    // collects the second half of data to "rightHalf"
+    while (index < (data.length())) {
+        rightHalf += data[index];
+        index++;
+    }
 }
 
 int main() {

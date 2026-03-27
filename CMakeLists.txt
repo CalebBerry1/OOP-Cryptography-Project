@@ -45,7 +45,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 add_library(Helpers
-    src/algorithms/helper/makeStringToBinary.cpp
+    src/algorithms/helper/makeStringToBinaryString.cpp
 )
 
 target_include_directories(Helpers PUBLIC
