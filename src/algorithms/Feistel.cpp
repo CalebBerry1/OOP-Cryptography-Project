@@ -2,23 +2,25 @@
 #include <iostream>
 #include <bitset>
 #include <string>
-#include "makeStringToBinary.cpp"
+#include "helper/makeStringToBinary.h"
 
 std::string input;
 std::string output;
+int ascii;
 
 // round function example: convert data and key to ASCII, increase ASCII values by key
-int roundFunction(std::string data, int key) {
+std::string roundFunction(std::string data, int key) {
 
     // iterates through each character in the data input, increasing its ASCII value by the key
     for (char c : data) {
-        int answer = c;
-        c += key;
+        ascii = c;
+        ascii += key;
 
         // converts the new character from int to binary
-        output += makeStringToBinary(std::to_string(num));
+        output += makeStringToBinary(std::to_string(ascii));
     }
 
+    return output;
 }
 
 int main() {

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <bitset>
 
 std::string makeStringToBinary(std::string input) {
     std::string result;
