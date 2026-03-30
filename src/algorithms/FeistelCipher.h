@@ -16,4 +16,7 @@ class FeistelCipher : public ICipher {
     std::string rightHalf;
     int index = 0;
     int ascii;
+    std::string roundFunction(std::string data, int key);
+    void splitData(std::string data);
+    
 };

@@ -3,10 +3,11 @@
 #include <bitset>
 #include <string>
 #include "helper/makeStringToBinaryString.h"
+#include "FeistelCipher.h"
 
 
 // round function example: convert data and key to ASCII, increase ASCII values by key
-std::string roundFunction(std::string data, int key) {
+std::string FeistelCipher::roundFunction(std::string data, int key) {
 
     // iterates through each character in the data input, increasing its ASCII value by the key
     for (char c : data) {
@@ -21,7 +22,7 @@ std::string roundFunction(std::string data, int key) {
 }
 
 // function to split the data input into two halves, assigning the halves to "leftHalf" and "rightHalf"
-void splitData(std::string data) {
+void FeistelCipher::splitData(std::string data) {
 
     // collects the first half of data to "leftHalf"
     while (index < (data.length()/2) ) {
