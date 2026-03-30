@@ -4,13 +4,13 @@ param(
 )
 
 $SRC_DIR = (Get-Item $PSScriptRoot).Parent.FullName
-$BUILD_DIR = Join-Path $SRC_DIR "..\MiniProject_build"
-$APP_PATH = Join-Path $BUILD_DIR "MiniProject.exe"
+$BUILD_DIR = Join-Path $SRC_DIR "build\win-debug"
+$APP_PATH = Join-Path $BUILD_DIR "Debug\CryptographyProject.exe"
 
 switch ($cmd) {
     "reconfig" {
         Write-Host "🔧 Configuring CMake..."
-        cmake -S $SRC_DIR -B $BUILD_DIR -DCMAKE_BUILD_TYPE=Debug
+        cmake --preset win-debug
     }
     "build" {
         Write-Host "🏗️  Building..."
