@@ -64,7 +64,7 @@ target_link_libraries(TestApp PRIVATE Helpers)
 add_executable(CipherXOR src/algorithms/XOR.cpp)
 target_link_libraries(CipherXOR PRIVATE Helpers)
 
-add_executable(CipherFeistel src/algorithms/Feistel.cpp)
+add_executable(CipherFeistel src/algorithms/FeistelCipher.cpp)
 
 add_executable(AlgorithmMain src/algorithms/algorithmMain.cpp)
 target_link_libraries(AlgorithmMain PRIVATE Algorithms)
