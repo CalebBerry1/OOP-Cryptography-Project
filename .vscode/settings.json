@@ -2,14 +2,11 @@
   "editor.formatOnSave": true,
   "C_Cpp.clang_format_style": "file",
   "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+  "C_Cpp.errorSquiggles": "enabled",
   "qt.qml.languageServer.enabled": true,
   "qt.qml.languageServer.buildDir": "${workspaceFolder}/build/debug",
   "cmake.configureEnvironment": {
     "VSCMD_START_DIR": "${workspaceFolder}"
-  }
-}
-  "cmake.cmakePath": "C:/Qt/Tools/CMake_64/bin/cmake.exe",
-  "cmake.generator": "Ninja",
-  "cmake.ninjaPath": "C:/Qt/Tools/Ninja/ninja.exe",
-  "C_Cpp.errorSquiggles": "disabled"
+  },
+  "cmake.buildDirectory": "${workspaceFolder}/build/debug"
 }
