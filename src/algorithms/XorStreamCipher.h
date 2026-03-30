@@ -1,5 +1,8 @@
 #pragma once
 
+#include <bitset>
+#include <string>
+#include <vector>
 #include "../core/ICipher.h"
 
 class XorStreamCipher : public ICipher {
@@ -7,4 +10,13 @@ class XorStreamCipher : public ICipher {
         CryptoResult run(const CryptoRequest& req, ICryptoStepSink& sink) override {
             return CryptoResult{false, {}, "XorStreamCipher not yet implemented"};
         }
+    
+    private:
+        std::vector<std::bitset<8>> toBinary(const std::string& input);
+        std::string fromBinary(const std::vector<std::bitset<8>>& binary);
+        std::vector<std::bitset<8>> generateKey(int length);
+        std::vector<std::bitset<8>> applyXor(
+            const std::vector<std::bitset<8>>& input,
+            const std::vector<std::bitset<8>>& key
+        );
 };
