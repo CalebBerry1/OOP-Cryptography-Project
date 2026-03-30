@@ -7,9 +7,7 @@
 
 class XorStreamCipher : public ICipher {
     public:
-        CryptoResult run(const CryptoRequest& req, ICryptoStepSink& sink) override {
-            return CryptoResult{false, {}, "XorStreamCipher not yet implemented"};
-        }
+        CryptoResult run(const CryptoRequest& req, ICryptoStepSink& sink) override;
     
     private:
         std::vector<std::bitset<8>> toBinary(const std::string& input);

@@ -1,6 +1,6 @@
 #include "XorStreamCipher.h"
 #include <QDebug>
-#include <stdlib.h>
+#include <cstdlib>
 
 std::vector<std::bitset<8>> XorStreamCipher::toBinary(const std::string& input) {
     std::vector<std::bitset<8>> binary;
