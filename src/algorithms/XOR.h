@@ -5,17 +5,17 @@
 #include "helper/makeCharToBitset.h"
 
 class XOR {
-public:
-    std::string targetOriginal;
-    std::vector<std::bitset<8>> targetBinary;
-    int keyCharacter;
-    std::vector<int> keyInts;
-    std::vector<std::bitset<8>> keyBytes;
-    std::vector<std::bitset<8>> resultBinary;
-    std::vector<std::string> resultPlaintext;
-    int byteToInt;
-    std::string result;
-    int indexBytes = 0;
-    int indexBits = 7;
+std::string targetOriginal;
+std::vector<std::bitset<8>> targetBinary;
+int keyCharacter;
+std::vector<int> keyInts;
+std::vector<std::bitset<8>> keyBytes;
+std::vector<std::bitset<8>> resultBinary;
+std::vector<std::string> resultPlaintext;
+int byteToInt;
+std::string result;
+int indexBytes = 0;
+int indexBits = 7;
+    public:
     void mainXOR();
 };

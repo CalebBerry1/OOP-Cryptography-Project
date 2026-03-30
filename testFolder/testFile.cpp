@@ -7,8 +7,8 @@
 #include "helper/makeCharToBitset.h"
 
 
-// OBJECTIVE: XOR the half of data given
-// need to convert characters to bytes
+// OBJECTIVE: make the classes work
+// create a test class, and make a sample dragon
 
 std::string test = "Love";
 
