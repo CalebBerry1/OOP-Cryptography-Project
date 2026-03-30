@@ -74,6 +74,7 @@ target_link_libraries(AlgorithmMain PRIVATE Helpers)
 qt_add_executable(CryptographyProject
     src/main.cpp
     src/algorithms/XorStreamCipher.h
+    src/algorithms/XorStreamCipher.cpp
     src/algorithms/VigenereCipher.h
     src/algorithms/FeistelCipher.h
     src/components/app/mainWindow.h
