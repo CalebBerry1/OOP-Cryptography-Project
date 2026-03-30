@@ -1,5 +1,5 @@
 param(
-    [Parameter(Position = 0)]
+    [Parameter(Position=0)]
     [string]$cmd = "help"
 )
 
@@ -34,15 +34,13 @@ switch ($cmd) {
         Remove-Item -Recurse -Force $BUILD_DIR -ErrorAction SilentlyContinue
     }
     default {
-        Write-Host @"
-Usage: task <command>
-
-Commands:
-  reconfig   Configure CMake
-  build      Build the app
-  start      Run the built app
-  rebuild    Reconfigure + build + start
-  clean      Delete build dir
-"@
+        Write-Host "Usage:  task <command>"
+        Write-Host ""
+        Write-Host "Commands:"
+        Write-Host " reconfig   Configure CMake"
+        Write-Host " build      Build the app"
+        Write-Host " start      Run the build app"
+        Write-Host " rebuild    Reconfigure + build + start"
+        Write-Host " clean      Delete build dir"
     }
 }
