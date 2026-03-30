@@ -46,6 +46,12 @@ set(CMAKE_AUTOUIC ON)
 
 add_library(Helpers
     src/algorithms/helper/makeStringToBinaryString.cpp
+    src/algorithms/helper/makeCharToBitset.cpp
+)
+
+add_library(Algorithms
+    src/algorithms/XOR.cpp
+    src/algorithms/Feistel.cpp
 )
 
 target_include_directories(Helpers PUBLIC
@@ -54,8 +60,17 @@ target_include_directories(Helpers PUBLIC
 
 add_executable(TestApp testFolder/testFile.cpp)
 target_link_libraries(TestApp PRIVATE Helpers)
+
 add_executable(CipherXOR src/algorithms/XOR.cpp)
+target_link_libraries(CipherXOR PRIVATE Helpers)
+
 add_executable(CipherFeistel src/algorithms/Feistel.cpp)
+
+add_executable(AlgorithmMain src/algorithms/algorithmMain.cpp)
+target_link_libraries(AlgorithmMain PRIVATE Algorithms)
+target_link_libraries(AlgorithmMain PRIVATE Helpers)
+
+
 qt_add_executable(CryptographyProject
     src/main.cpp
     src/components/app/mainWindow.h
