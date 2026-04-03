@@ -41,7 +41,43 @@ std::string XorStreamCipher::fromBinary(const std::vector<std::bitset<8>>& binar
     return result;
 }
 
+// overload 1
 CryptoResult XorStreamCipher::run(const CryptoRequest& req, ICryptoStepSink& sink) {
+    try {
+        qDebug() << "[XorStreamCipher] run() called";
+        std::string input = req.input.toStdString();
+        sink.onStep(CryptoStep{ StepType::Init, 0, req.input, "XOR cipher starting"});
+
+        // Phase 1 - convert input to binary
+        auto inputBinary = toBinary(input);
+        sink.onStep(CryptoStep{ StepType::Transform, 0, req.input, "Input converted to binary"});
+
+        // Phase 2 - generate kay
+        auto key = generateKey(input.size());
+        sink.onStep(CryptoStep{ StepType::Transform, 1, req.input, "Key generated"});
+
+        // Phase 3 - apply XOR
+        auto resultBinary = applyXor(inputBinary, key);
+        sink.onStep(CryptoStep{ StepType::Transform, 2, req.input,"XOR applied"});
+
+        // Phase 4 - convert back to string
+        std::string resultStr = fromBinary(resultBinary);
+        QByteArray output = QByteArray::fromStdString(resultStr);
+
+        sink.onStep(CryptoStep{ StepType::Complete, 0, output, "XOR cipher complete"});
+
+        qDebug() << "[XorStreamCipher] Completed successfully";
+        return CryptoResult{ true, output, ""};
+    
+    } catch (const std::exception& e) {
+        qDebug() << "[XorStreamCipher] Error:" << e.what();
+        return CryptoResult{ false, {}, QString::fromStdString(e.what())};
+    }
+}
+
+// overload 2
+// block1 and block2 are supposed to be two halves of data input, for the FesitelCipher
+CryptoResult XorStreamCipher::run(const CryptoRequest& block1, const CryptoRequest& block2, ICryptoStepSink& sink) {
     try {
         qDebug() << "[XorStreamCipher] run() called";
         std::string input = req.input.toStdString();

@@ -18,5 +18,6 @@ class FeistelCipher : public ICipher {
     int ascii;
     std::string roundFunction(std::string data, int key);
     void splitData(std::string data);
+    void XORHalf(XorStreamCipher XorObject, std::string rightHalf, std::string leftHalf);
     
 };

@@ -8,6 +8,7 @@
 class XorStreamCipher : public ICipher {
     public:
         CryptoResult run(const CryptoRequest& req, ICryptoStepSink& sink) override;
+        CrpyoResult run(const CryptoRequest& block1, const CryptoRequest& block2, ICryptoStepSink& sink) override;
     
     private:
         std::vector<std::bitset<8>> toBinary(const std::string& input);

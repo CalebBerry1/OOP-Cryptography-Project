@@ -53,12 +53,15 @@ target_include_directories(Helpers PUBLIC
     ${CMAKE_SOURCE_DIR}/src/algorithms
 )
 
+add_executable(TestApp testFolder/testFile.cpp)
+
 qt_add_executable(CryptographyProject
     src/main.cpp
     src/algorithms/XorStreamCipher.h
     src/algorithms/XorStreamCipher.cpp
     src/algorithms/VigenereCipher.h
     src/algorithms/FeistelCipher.h
+    src/algorithms/FeistelCipher.cpp
     src/components/app/mainWindow.h
     src/components/app/mainWindow.cpp
     src/components/pages/homePage.h

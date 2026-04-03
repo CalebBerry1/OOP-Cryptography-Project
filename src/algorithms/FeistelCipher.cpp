@@ -37,9 +37,11 @@ void FeistelCipher::splitData(std::string data) {
     }
 }
 
-int main() {
-    std::cout << "Enter your message to encrpyt: \n";
-    std::cin >> input;
-    
-    return 0;
+// function to XOR the right half of data onto the left half
+// the "XorStreamCipher XorObject" parameter requires the instantiated XOR object 
+// we may need to overload the run function, because instead of generating a key to use for XOR, we need to use the
+// right half as the key, and XOR it with the left half. but can keep existing run function as overlaoding example
+// we could also make FeistelCipher a child class of XORCipher parent class
+void FeistelCipher::XORHalf(XorStreamCipher XorObject, std::string rightHalf, std::string leftHalf) {
+    XorObject.run()
 }
