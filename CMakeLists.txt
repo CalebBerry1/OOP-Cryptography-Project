@@ -54,6 +54,7 @@ target_include_directories(Helpers PUBLIC
 )
 
 add_executable(TestApp testFolder/testFile.cpp)
+target_link_libraries(TestApp PRIVATE Helpers)
 
 qt_add_executable(CryptographyProject
     src/main.cpp

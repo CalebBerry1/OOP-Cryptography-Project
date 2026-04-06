@@ -4,6 +4,8 @@
 #include <string>
 #include "helper/makeStringToBinaryString.h"
 #include "FeistelCipher.h"
+#include "XorStreamCipher.h"
+#include <tuple>
 
 
 // round function example: convert data and key to ASCII, increase ASCII values by key
@@ -42,6 +44,10 @@ void FeistelCipher::splitData(std::string data) {
 // we may need to overload the run function, because instead of generating a key to use for XOR, we need to use the
 // right half as the key, and XOR it with the left half. but can keep existing run function as overlaoding example
 // we could also make FeistelCipher a child class of XORCipher parent class
-void FeistelCipher::XORHalf(XorStreamCipher XorObject, std::string rightHalf, std::string leftHalf) {
-    XorObject.run()
+void FeistelCipher::XORHalf(XorStreamCipher XorObject, std::string inputLeft, std::string inputRight) {
+    std::tie(leftHalf, rightHalf) = XorObject.run(inputLeft, inputRight);
+}
+
+void FeistelCipher::updateHalves(std::string leftHalf, std::string rightHalf) {
+
 }

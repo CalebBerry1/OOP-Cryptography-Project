@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include "../core/ICipher.h"
+#include "XorStreamCipher.h"
+#include <tuple>
 
 class FeistelCipher : public ICipher {
     public:
@@ -19,5 +21,5 @@ class FeistelCipher : public ICipher {
     std::string roundFunction(std::string data, int key);
     void splitData(std::string data);
     void XORHalf(XorStreamCipher XorObject, std::string rightHalf, std::string leftHalf);
-    
+    void updateHalves(std::string oldLeft, std::string oldRight);
 };
