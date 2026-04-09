@@ -5,18 +5,23 @@
 #include "helper/makeStringToBinaryString.h"
 #include "FeistelCipher.h"
 #include "helper/makeCharToBitset.h"
+#include <tuple>
 
 
 // OBJECTIVE: make the classes work
 // create a test class, and make a sample dragon
 
-std::string test = "Love";
+std::string testFunction() {
+    std::pair();
+    return "First value", "Second value";
+}
+
+std::string first;
+std::string second;
 
 int main() {
 
-    for (char c : test) {
-        std::bitset<8> byte(c);
-        std::cout << byte << "\n";
-    }
+    std::tie(first, second) = testFunction();
+    
     return 0;
 }

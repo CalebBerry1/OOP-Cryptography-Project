@@ -80,7 +80,6 @@ CryptoResult XorStreamCipher::run(const CryptoRequest& req, ICryptoStepSink& sin
 std::string XorStreamCipher::run(const std::string& block1, const std::string& block2) {
     try {
         qDebug() << "[XorStreamCipher] run() called";
-        const std::string& message = block1 + block2;
         std::string leftHalf = block1;
         std::string rightHalf = block2;
         //sink.onStep(CryptoStep{ StepType::Init, 0, message.input, "XOR cipher starting"});
