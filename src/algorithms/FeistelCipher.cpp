@@ -7,10 +7,11 @@
 #include "XorStreamCipher.h"
 #include <tuple>
 #include <utility>
+using namespace std;
 
 
 // round function example: convert data and key to ASCII, increase ASCII values by key
-std::string FeistelCipher::roundFunction(std::string data, int key) {
+string FeistelCipher::roundFunction(string data, int key) {
 
     // iterates through each character in the data input, increasing its ASCII value by the key
     for (char c : data) {
@@ -18,14 +19,14 @@ std::string FeistelCipher::roundFunction(std::string data, int key) {
         ascii += key;
 
         // converts the new character from int to binary
-        output += makeStringToBinary(std::to_string(ascii));
+        output += makeStringToBinary(to_string(ascii));
     }
 
     return output;
 }
 
 // function to split the data input into two halves, assigning the halves to "leftHalf" and "rightHalf"
-void FeistelCipher::splitData(std::string data) {
+void FeistelCipher::splitData(string data) {
 
     // collects the first half of data to "leftHalf"
     while (index < (data.length()/2) ) {
@@ -45,12 +46,21 @@ void FeistelCipher::splitData(std::string data) {
 // we may need to overload the run function, because instead of generating a key to use for XOR, we need to use the
 // right half as the key, and XOR it with the left half. but can keep existing run function as overlaoding example
 // we could also make FeistelCipher a child class of XORCipher parent class
-void FeistelCipher::XORHalf(XorStreamCipher XorObject, std::string inputLeft, std::string inputRight) {
+void FeistelCipher::XORHalf(XorStreamCipher XorObject, string inputLeft, string inputRight) {
 
     // assigns the new leftHalf and rightHalf values, after the XOR operation occurs
-    std::tie(leftHalf, rightHalf) = XorObject.run(inputLeft, inputRight);
+    tie(leftHalf, rightHalf) = XorObject.run(inputLeft, inputRight);
 }
 
-void FeistelCipher::updateHalves(std::string leftHalf, std::string rightHalf) {
+pair<string, string> FeistelCipher::returnHalves() {
+    return {leftHalf, rightHalf};
+}
 
+// Feistel run function
+void FeistelCipher::run(string input, XorStreamCipher XorObject) {
+    splitData(input);
+    roundFunction(rightHalf, 20);
+    XORHalf(XorObject, leftHalf, rightHalf);
+    returnHalves();
+    
 }

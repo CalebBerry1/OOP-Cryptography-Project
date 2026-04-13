@@ -6,20 +6,21 @@
 #include "../core/ICipher.h"
 #include "XorStreamCipher.h"
 #include <tuple>
+using namespace std;
 
 class FeistelCipher : public ICipher {
     public:
-        CryptoResult run(const CryptoRequest& req, ICryptoStepSink& sink) override;
+        CryptoResult run(const CryptoRequest& req, ICryptoStepSink& sink, const XorStreamCipher& XorObject);
     
     private:  
-    std::string input;
-    std::string output;
-    std::string leftHalf;
-    std::string rightHalf;
+    string input;
+    string output;
+    string leftHalf;
+    string rightHalf;
     int index = 0;
     int ascii;
-    std::string roundFunction(std::string data, int key);
-    void splitData(std::string data);
-    void XORHalf(XorStreamCipher XorObject, std::string rightHalf, std::string leftHalf);
-    void updateHalves(std::string oldLeft, std::string oldRight);
+    string roundFunction(string data, int key);
+    void splitData(string data);
+    void XORHalf(XorStreamCipher XorObject, string rightHalf, string leftHalf);
+    pair<string, string> returnHalves();
 };

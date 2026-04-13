@@ -81,6 +81,7 @@ qt_add_executable(CryptographyProject
 )
 
 target_include_directories(CryptographyProject PRIVATE ${CMAKE_SOURCE_DIR}/src)
+target_include_directories(CryptographyProject PRIVATE Helpers)
 
 target_link_libraries(CryptographyProject PRIVATE
     Qt6::Core
