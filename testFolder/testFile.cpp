@@ -5,23 +5,13 @@
 #include "helper/makeStringToBinaryString.h"
 #include "FeistelCipher.h"
 #include "helper/makeCharToBitset.h"
-#include <tuple>
+#include <utility>
 
 
-// OBJECTIVE: make the classes work
-// create a test class, and make a sample dragon
+// OBJECTIVE: test the XOR and Feistel Ciphers
 
-std::string testFunction() {
-    std::pair();
-    return "First value", "Second value";
-}
 
-std::string first;
-std::string second;
 
 int main() {
 
-    std::tie(first, second) = testFunction();
-    
-    return 0;
 }
