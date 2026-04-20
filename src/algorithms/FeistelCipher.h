@@ -11,6 +11,7 @@ using namespace std;
 class FeistelCipher : public ICipher {
     public:
         CryptoResult run(const CryptoRequest& req, ICryptoStepSink& sink, const XorStreamCipher& XorObject);
+        void run(string input, XorStreamCipher XorObject);
     
     private:  
     string input;

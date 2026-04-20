@@ -56,7 +56,16 @@ pair<string, string> FeistelCipher::returnHalves() {
     return {leftHalf, rightHalf};
 }
 
-// Feistel run function
+// Feistel CryptoResult run function
+CryptoResult FeistelCipher::run(const CryptoRequest& req, ICryptoStepSink& sink, const XorStreamCipher& XorObject) {
+    pair<string, string> resultPair = returnHalves();
+    string resultString = resultPair.first + resultPair.second;
+    QByteArray output = QByteArray::fromStdString(resultString);
+    
+    return CryptoResult{ true, output, ""};
+}
+
+// Feistel main run function
 void FeistelCipher::run(string input, XorStreamCipher XorObject) {
     splitData(input);
     roundFunction(rightHalf, 20);

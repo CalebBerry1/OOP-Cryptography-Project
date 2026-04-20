@@ -80,8 +80,8 @@ qt_add_executable(CryptographyProject
     src/domain/CryptoModels.h
 )
 
-target_include_directories(CryptographyProject PRIVATE ${CMAKE_SOURCE_DIR}/src)
-target_include_directories(CryptographyProject PRIVATE Helpers)
+target_include_directories(CryptographyProject PRIVATE ${CMAKE_SOURCE_DIR}/src/algorithms)
+target_link_libraries(CryptographyProject PRIVATE Helpers)
 
 target_link_libraries(CryptographyProject PRIVATE
     Qt6::Core

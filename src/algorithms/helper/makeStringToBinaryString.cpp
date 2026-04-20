@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <bitset>
+#include "makeStringToBinaryString.h"
 
 std::string makeStringToBinary(std::string input) {
     std::string result;
