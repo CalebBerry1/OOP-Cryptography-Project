@@ -1,4 +1,5 @@
 #include "encryptPage.h"
+#include "../../domain/CryptoModels.h"
 #include "../buttons/PrimaryButton.h"
 #include "../styles/AppStyles.h"
 #include "../styles/AppColors.h"
@@ -105,12 +106,38 @@ EncryptPage::EncryptPage(QWidget* parent) : QWidget(parent) {
     qDebug() << "[EncryptPage] Ready";
 }
 
+Algorithm EncryptPage::algorithmFromString(const QString& text) {
+    if (text == "XOR Stream Cipher") {
+        return Algorithm::XorStream;
+    }
+    if (text == "Vigenere Cipher") {
+        return Algorithm::Vigenere;
+    }
+    return Algorithm::Feistel;
+}
+
 void EncryptPage::onEncryptClicked() {
     try {
         qDebug() << "[EncryptPage] onEncryptClicked()";
 
         QString input = inputField_ -> toPlainText().trimmed();
         QString algorithm = algorithmSelector_ -> currentText();
+
+        Algorithm algo = algorithmFromString(algorithm);
+
+        CryptoRequest req;
+        req.algorithm = algo;
+        req.mode = CryptoMode::Encrypt;
+        req.input = input.toUtf8();
+        req.key = "";
+
+        CryptoResult result = service_.execute(req);
+
+        if (result.success) {
+            outputField_ -> setPlainText(QString::fromUtf8(result.output));
+        } else {
+            outputField_ -> setPlainText("Error: " + result.errorMessage);
+        }
 
         if (input.isEmpty()) {
             qDebug() << "[EncryptPage] Encrypt aborted - input is empty";
@@ -121,6 +148,8 @@ void EncryptPage::onEncryptClicked() {
         qDebug() << "[EncryptPage] Encrypting with algorithm:" << algorithm;
 
         // Dummy output - replace with real cipher logic later
+        // Idea: makes a CryptoRequest with the algorithm, mode, input, and key, passes it to service?
+        // service goes and makes and performs encryption algorithm, comes back with algorithm results?
         outputField_ -> setPlainText("ENCRYPTED[" + algorithm + "]: Wq7#mZ2$kLp!9vNx");
     } catch (const std::exception& e) {
         qDebug() << "[EncryptPage] onEncryptClicked() exception:" << e.what();
