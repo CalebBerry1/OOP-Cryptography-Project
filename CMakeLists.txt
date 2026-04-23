@@ -53,9 +53,6 @@ target_include_directories(Helpers PUBLIC
     ${CMAKE_SOURCE_DIR}/src/algorithms
 )
 
-add_executable(TestApp testFolder/testFile.cpp)
-target_link_libraries(TestApp PRIVATE Helpers)
-
 qt_add_executable(CryptographyProject
     src/main.cpp
     src/algorithms/XorStreamCipher.h
@@ -103,11 +100,13 @@ qt_add_executable(CipherFactoryTest
     src/algorithms/XorStreamCipher.cpp
     src/algorithms/VigenereCipher.h
     src/algorithms/FeistelCipher.h
+    src/algorithms/FeistelCipher.cpp
 )
 
 target_link_libraries(CipherFactoryTest PRIVATE
     Qt6::Core
     Qt6::Test
+    Helpers
 )
 
 qt_add_executable(CryptoServiceTest 
@@ -120,8 +119,10 @@ qt_add_executable(CryptoServiceTest
     src/domain/CryptoModels.h
     src/domain/CryptoStep.h
     src/algorithms/XorStreamCipher.h
+    src/algorithms/XorStreamCipher.cpp
     src/algorithms/VigenereCipher.h
     src/algorithms/FeistelCipher.h
+    src/algorithms/FeistelCipher.cpp
 )
 
 target_link_libraries(CryptoServiceTest PRIVATE
@@ -131,6 +132,7 @@ target_link_libraries(CryptoServiceTest PRIVATE
 
 target_include_directories(CipherFactoryTest PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_include_directories(CryptoServiceTest PRIVATE ${CMAKE_SOURCE_DIR}/src)
+target_link_libraries(CryptoServiceTest PRIVATE Helpers)
 
 if (APPLE)
     set_target_properties(CryptographyProject PROPERTIES MACOSX_BUNDLE TRUE)

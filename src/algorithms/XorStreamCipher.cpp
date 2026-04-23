@@ -107,6 +107,6 @@ pair<string, string> XorStreamCipher::run(const string& block1, const string& bl
     
     } catch (const exception& e) {
         qDebug() << "[XorStreamCipher] Error:" << e.what();
-        //return CryptoResult{ false, {}, QString::fromStdString(e.what())};
+        return {"", ""};
     }
 }

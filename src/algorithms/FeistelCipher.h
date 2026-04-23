@@ -10,8 +10,7 @@ using namespace std;
 
 class FeistelCipher : public ICipher {
     public:
-        CryptoResult run(const CryptoRequest& req, ICryptoStepSink& sink, const XorStreamCipher& XorObject);
-        void run(string input, XorStreamCipher XorObject);
+        CryptoResult run(const CryptoRequest& req, ICryptoStepSink& sink) override;
     
     private:  
     string input;
@@ -22,6 +21,7 @@ class FeistelCipher : public ICipher {
     int ascii;
     string roundFunction(string data, int key);
     void splitData(string data);
-    void XORHalf(XorStreamCipher XorObject, string rightHalf, string leftHalf);
+    void XORHalf(string rightHalf, string leftHalf);
     pair<string, string> returnHalves();
+    XorStreamCipher xorCipher_;
 };

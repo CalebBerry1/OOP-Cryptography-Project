@@ -12,17 +12,18 @@ using namespace std;
 
 // round function example: convert data and key to ASCII, increase ASCII values by key
 string FeistelCipher::roundFunction(string data, int key) {
-
+    string result;
     // iterates through each character in the data input, increasing its ASCII value by the key
     for (char c : data) {
         ascii = c;
         ascii += key;
-
-        // converts the new character from int to binary
-        output += makeStringToBinary(to_string(ascii));
+        result += static_cast<char>(ascii);
+        // output is a member variable that is appended here, but was never cleared between calls
+        // ended up bleeding into the final result, this fixes it
+        // it wasn't needed for this function
     }
 
-    return output;
+    return result;
 }
 
 // function to split the data input into two halves, assigning the halves to "leftHalf" and "rightHalf"
@@ -46,10 +47,10 @@ void FeistelCipher::splitData(string data) {
 // we may need to overload the run function, because instead of generating a key to use for XOR, we need to use the
 // right half as the key, and XOR it with the left half. but can keep existing run function as overlaoding example
 // we could also make FeistelCipher a child class of XORCipher parent class
-void FeistelCipher::XORHalf(XorStreamCipher XorObject, string inputLeft, string inputRight) {
+void FeistelCipher::XORHalf(string inputLeft, string inputRight) {
 
     // assigns the new leftHalf and rightHalf values, after the XOR operation occurs
-    tie(leftHalf, rightHalf) = XorObject.run(inputLeft, inputRight);
+    tie(leftHalf, rightHalf) = xorCipher_.run(inputLeft, inputRight);
 }
 
 pair<string, string> FeistelCipher::returnHalves() {
@@ -57,19 +58,13 @@ pair<string, string> FeistelCipher::returnHalves() {
 }
 
 // Feistel CryptoResult run function
-CryptoResult FeistelCipher::run(const CryptoRequest& req, ICryptoStepSink& sink, const XorStreamCipher& XorObject) {
+CryptoResult FeistelCipher::run(const CryptoRequest& req, ICryptoStepSink& sink) {
+    splitData(req.input.toStdString());
+    string processedRight = roundFunction(rightHalf, req.key.toInt());
+    XORHalf(leftHalf, processedRight);
     pair<string, string> resultPair = returnHalves();
     string resultString = resultPair.first + resultPair.second;
     QByteArray output = QByteArray::fromStdString(resultString);
     
     return CryptoResult{ true, output, ""};
-}
-
-// Feistel main run function
-void FeistelCipher::run(string input, XorStreamCipher XorObject) {
-    splitData(input);
-    roundFunction(rightHalf, 20);
-    XORHalf(XorObject, leftHalf, rightHalf);
-    returnHalves();
-    
 }
