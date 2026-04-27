@@ -130,6 +130,7 @@ qt_add_executable(CryptoServiceTest
 target_link_libraries(CryptoServiceTest PRIVATE
     Qt6::Core
     Qt6::Test
+    Helpers
 )
 
 qt_add_executable(CryptoEngineTest
@@ -144,13 +145,16 @@ qt_add_executable(CryptoEngineTest
     src/domain/CryptoModels.h
     src/domain/CryptoStep.h
     src/algorithms/XorStreamCipher.h
+    src/algorithms/XorStreamCipher.cpp
     src/algorithms/VigenereCipher.h
     src/algorithms/FeistelCipher.h
+    src/algorithms/FeistelCipher.cpp
 )
 
 target_link_libraries(CryptoEngineTest PRIVATE
     Qt6::Core
     Qt6::Test
+    Helpers
 )
 
 target_include_directories(CipherFactoryTest PRIVATE ${CMAKE_SOURCE_DIR}/src)
