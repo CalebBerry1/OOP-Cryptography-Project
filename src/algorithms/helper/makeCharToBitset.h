@@ -1,0 +1,1 @@
+std::bitset<8> makeCharToBitset(char c);

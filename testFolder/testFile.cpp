@@ -1,12 +1,17 @@
 // test file
-
-// the XOR cipher takes an input target string, generates a random key, then uses the key to encrypt the target
 #include <iostream>
+#include <string>
+#include <bitset>
+#include "helper/makeStringToBinaryString.h"
+#include "FeistelCipher.h"
+#include "helper/makeCharToBitset.h"
+#include <utility>
 
-std::string target;
-std::string key;
-std::string result;
+
+// OBJECTIVE: test the XOR and Feistel Ciphers
+
+
 
 int main() {
-    std::cout << "Hello Pyrrhia and BAB and BOOBLES and more testing";
+
 }
