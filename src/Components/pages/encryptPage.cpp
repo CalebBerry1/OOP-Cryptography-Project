@@ -1,4 +1,5 @@
 #include "encryptPage.h"
+#include "../../domain/CryptoModels.h"
 #include "../buttons/PrimaryButton.h"
 #include "../styles/AppStyles.h"
 #include "../styles/AppColors.h"
@@ -105,6 +106,16 @@ EncryptPage::EncryptPage(QWidget* parent) : QWidget(parent) {
     qDebug() << "[EncryptPage] Ready";
 }
 
+Algorithm EncryptPage::algorithmFromString(const QString& text) {
+    if (text == "XOR Stream Cipher") {
+        return Algorithm::XorStream;
+    }
+    if (text == "Vigenere Cipher") {
+        return Algorithm::Vigenere;
+    }
+    return Algorithm::Feistel;
+}
+
 void EncryptPage::onEncryptClicked() {
     try {
         qDebug() << "[EncryptPage] onEncryptClicked()";
@@ -112,16 +123,32 @@ void EncryptPage::onEncryptClicked() {
         QString input = inputField_ -> toPlainText().trimmed();
         QString algorithm = algorithmSelector_ -> currentText();
 
+        Algorithm algo = algorithmFromString(algorithm);
+
         if (input.isEmpty()) {
             qDebug() << "[EncryptPage] Encrypt aborted - input is empty";
             outputField_ -> setPlainText("Please enter some text to encrypt.");
             return;
         }
 
+        CryptoRequest req;
+        req.algorithm = algo;
+        req.mode = CryptoMode::Encrypt;
+        req.input = input.toUtf8();
+        req.key = "";
+
+        CryptoResult result = service_.execute(req);
+
+        if (result.success) {
+            outputField_ -> setPlainText(QString::fromUtf8(result.output));
+        } else {
+            outputField_ -> setPlainText("Error: " + result.errorMessage);
+        }
+
         qDebug() << "[EncryptPage] Encrypting with algorithm:" << algorithm;
 
-        // Dummy output - replace with real cipher logic later
-        outputField_ -> setPlainText("ENCRYPTED[" + algorithm + "]: Wq7#mZ2$kLp!9vNx");
+        // Idea: makes a CryptoRequest with the algorithm, mode, input, and key, passes it to service?
+        // service goes and makes and performs encryption algorithm, comes back with algorithm results?
     } catch (const std::exception& e) {
         qDebug() << "[EncryptPage] onEncryptClicked() exception:" << e.what();
     }
@@ -134,17 +161,31 @@ void EncryptPage::onDecryptClicked() {
         QString input = inputField_ -> toPlainText().trimmed();
         QString algorithm = algorithmSelector_ -> currentText();
 
+        Algorithm algo = algorithmFromString(algorithm);
+
         if (input.isEmpty()) {
             qDebug() << "[EncryptPage] Decrypt aborted - input is empty";
             outputField_ -> setPlainText("Please enter some text to decrypt.");
             return;
         }
-        
-        qDebug() << "[EncryptPage] Decrypting with algorithm:" << algorithm;
 
-        // Dummy output - replace with real cipher logic later
-        outputField_ -> setPlainText("DECRYPTED[" + algorithm + "]: Hello, world!");
+        CryptoRequest req;
+        req.algorithm = algo;
+        req.mode = CryptoMode::Decrypt;
+        req.input = input.toUtf8();
+        req.key = "";
+
+        CryptoResult result = service_.execute(req);
+
         
+
+        if (result.success) {
+            outputField_ -> setPlainText(QString::fromUtf8(result.output));
+        } else {
+            outputField_ -> setPlainText("Error: " + result.errorMessage);
+        }
+        
+        qDebug() << "[EncryptPage] Decrypting with algorithm:" << algorithm;        
 
         } catch (const std::exception& e) {
         qDebug() << "[EncryptPage] onDecryptClicked() exception:" << e.what();

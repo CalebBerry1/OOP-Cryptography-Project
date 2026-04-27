@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../../core/CryptoService.h"
 #include <QWidget>
 
 class QTextEdit;
@@ -22,4 +23,7 @@ class EncryptPage : public QWidget {
         QTextEdit* inputField_;
         QTextEdit* outputField_;
         QComboBox* algorithmSelector_;
+        CryptoService service_;
+
+        Algorithm algorithmFromString(const QString& text);
 };

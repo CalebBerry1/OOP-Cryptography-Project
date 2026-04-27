@@ -4,13 +4,13 @@ param(
 )
 
 $SRC_DIR = (Get-Item $PSScriptRoot).Parent.FullName
-$BUILD_DIR = Join-Path $SRC_DIR "..\MiniProject_build"
-$APP_PATH = Join-Path $BUILD_DIR "MiniProject.exe"
+$BUILD_DIR = Join-Path $SRC_DIR "build\win-debug"
+$APP_PATH = Join-Path $BUILD_DIR "Debug\CryptographyProject.exe"
 
 switch ($cmd) {
     "reconfig" {
         Write-Host "🔧 Configuring CMake..."
-        cmake -S $SRC_DIR -B $BUILD_DIR -DCMAKE_BUILD_TYPE=Debug
+        cmake --preset win-debug
     }
     "build" {
         Write-Host "🏗️  Building..."
@@ -34,15 +34,13 @@ switch ($cmd) {
         Remove-Item -Recurse -Force $BUILD_DIR -ErrorAction SilentlyContinue
     }
     default {
-        Write-Host @"
-Usage: task <command>
-
-Commands:
-  reconfig   Configure CMake
-  build      Build the app
-  start      Run the built app
-  rebuild    Reconfigure + build + start
-  clean      Delete build dir
-"@
+        Write-Host "Usage:  task <command>"
+        Write-Host ""
+        Write-Host "Commands:"
+        Write-Host " reconfig   Configure CMake"
+        Write-Host " build      Build the app"
+        Write-Host " start      Run the build app"
+        Write-Host " rebuild    Reconfigure + build + start"
+        Write-Host " clean      Delete build dir"
     }
 }
