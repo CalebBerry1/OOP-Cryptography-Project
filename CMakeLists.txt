@@ -78,6 +78,8 @@ qt_add_executable(CryptographyProject
     src/core/CryptoService.cpp
     src/domain/CryptoStep.h
     src/domain/CryptoModels.h
+    src/helpers/CryptoEngine.h
+    src/helpers/CryptoEngine.cpp
 )
 
 target_include_directories(CryptographyProject PRIVATE ${CMAKE_SOURCE_DIR}/src/algorithms)
@@ -130,9 +132,30 @@ target_link_libraries(CryptoServiceTest PRIVATE
     Qt6::Test
 )
 
+qt_add_executable(CryptoEngineTest
+    test/CryptoEngineTest.cpp
+    src/helpers/CryptoEngine.h
+    src/helpers/CryptoEngine.cpp
+    src/core/CipherFactory.h
+    src/core/CipherFactory.cpp
+    src/core/ICipher.h
+    src/core/CryptoService.h
+    src/core/CryptoService.cpp
+    src/domain/CryptoModels.h
+    src/domain/CryptoStep.h
+    src/algorithms/XorStreamCipher.h
+    src/algorithms/VigenereCipher.h
+    src/algorithms/FeistelCipher.h
+)
+
+target_link_libraries(CryptoEngineTest PRIVATE
+    Qt6::Core
+    Qt6::Test
+)
+
 target_include_directories(CipherFactoryTest PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_include_directories(CryptoServiceTest PRIVATE ${CMAKE_SOURCE_DIR}/src)
-target_link_libraries(CryptoServiceTest PRIVATE Helpers)
+target_include_directories(CryptoEngineTest PRIVATE  ${CMAKE_SOURCE_DIR}/src)
 
 if (APPLE)
     set_target_properties(CryptographyProject PROPERTIES MACOSX_BUNDLE TRUE)
