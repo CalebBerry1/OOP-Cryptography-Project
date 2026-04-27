@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     setWindowTitle("OOP Cryptography Project");
 
     const QRect avail = QGuiApplication::primaryScreen()->availableGeometry();
-    setMinimumSize(qRound(avail.width() * 0.5), qRound(avail.height() * 0.5));
+    setMinimumSize(qRound(avail.width() * 0.75), qRound(avail.height() * 0.5));
 
     stack_ = new QStackedWidget(this);
     setCentralWidget(stack_);

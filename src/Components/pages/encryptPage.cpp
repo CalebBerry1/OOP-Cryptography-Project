@@ -23,15 +23,20 @@ EncryptPage::EncryptPage(QWidget* parent) : QWidget(parent) {
     layout -> setContentsMargins(24, 24, 24, 24);
     layout -> setSpacing(16);
 
-    // --- TITLE ---
-    auto* title = new QLabel("Encryption", this);
-    title -> setAlignment(Qt::AlignCenter);
-    title -> setStyleSheet(AppStyles::labelPrimary());
+    // --- TITLES ---
+    auto* titleEncryption = new QLabel("Encryption", this);
+    titleEncryption -> setAlignment(Qt::AlignCenter);
+    titleEncryption -> setStyleSheet(AppStyles::labelPrimary());
+
+    auto* titleSteps = new QLabel("Steps", this);
+    titleSteps -> setAlignment(Qt::AlignCenter);
+    titleSteps -> setStyleSheet(AppStyles::labelPrimary());
 
     // --- ALGORITHM SELECTOR ---
     algorithmSelector_ = new QComboBox(this);
     algorithmSelector_ -> addItems({"XOR Stream Cipher", "Vigenere Cipher", "Feistel Cipher"});
     algorithmSelector_ -> setStyleSheet(AppStyles::comboBox());
+    algorithmSelector_ -> setFixedWidth(600);
 
     // --- INPUT FIELD ---
     auto* inputLabel = new QLabel("Source Text", this);
@@ -40,6 +45,7 @@ EncryptPage::EncryptPage(QWidget* parent) : QWidget(parent) {
     inputField_ = new QTextEdit(this);
     inputField_ -> setPlaceholderText("Enter text to encrypt...");
     inputField_ -> setFixedHeight(120);
+    inputField_ -> setFixedWidth(600);
     inputField_ -> setStyleSheet(AppStyles::inputField());
     inputField_ -> setGraphicsEffect(AppStyles::glowShadow(this));
 
@@ -50,6 +56,7 @@ EncryptPage::EncryptPage(QWidget* parent) : QWidget(parent) {
     outputField_ = new QTextEdit(this);
     outputField_ -> setPlaceholderText("Encrypted text will appear here...");
     outputField_ -> setFixedHeight(120);
+    outputField_ -> setFixedWidth(600);
     outputField_ -> setReadOnly(true);
     outputField_ -> setStyleSheet(AppStyles::inputField());
     outputField_ -> setGraphicsEffect(AppStyles::glowShadow(this));
@@ -85,9 +92,18 @@ EncryptPage::EncryptPage(QWidget* parent) : QWidget(parent) {
     buttonRow -> addWidget(copyButton);
     buttonRow -> addWidget(decryptButton);
     buttonRow -> addWidget(encryptButton);
+    buttonRow -> addStretch(2);
+
+    auto* titleRow = new QHBoxLayout();
+    titleRow -> setSpacing(175);
+    titleRow -> addStretch(1);
+    titleRow -> addWidget(titleEncryption);
+    titleRow -> addStretch(2);
+    titleRow -> addWidget(titleSteps);
+    titleRow -> addStretch(1);
 
     // --- ASSEMBLE ---
-    layout -> addWidget(title);
+    layout -> addLayout(titleRow);
     layout -> addWidget(algorithmSelector_);
     layout -> addWidget(inputLabel);
     layout -> addWidget(inputField_);
