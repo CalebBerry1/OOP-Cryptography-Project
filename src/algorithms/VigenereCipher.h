@@ -11,4 +11,6 @@ class VigenereCipher : public ICipher {
     private:
         char grid[26][26];
         void buildGrid();
+        pair<int, int> convertToAscii(string p, string k);
+        pair<int, int> findChar(int p, int k);
 };
